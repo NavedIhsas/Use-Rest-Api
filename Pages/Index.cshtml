@@ -1,0 +1,48 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "صفحه اصلی";
+    Layout = "_Layout";
+}
+
+<style>
+    .bg-white {
+        margin-top:-17px !important;
+    }
+    li.list-group-item {
+        border: none;
+    }
+
+    ul.list-group.list-group-horizontal-md {
+        padding-right: 0;
+    }
+</style>
+<div class="container" dir="rtl">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">لیست کاتالوگ ها</div>
+        </div>
+        <div class="card-body">
+
+            <div class="col col-md-12">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <ul class="list-group list-group-horizontal-md">
+                            @foreach (var item in Model.catalogMains)
+                            {
+                                <li class="list-group-item">
+                                    <a asp-page="/Catalogs" asp-route-id="@item.CatalogId" class="btn btn-primary btn-round btn-sm">@item.Name</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

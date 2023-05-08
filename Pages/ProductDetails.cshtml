@@ -1,0 +1,102 @@
+﻿@page "{id}"
+@model Catologs.Pages.ProductDetailsModel
+@{
+    ViewData["Title"] = "جزئیات محصول";
+}
+
+
+
+<style>
+
+    .list-card.bg-white.h-100.rounded.overflow-hidden.position-.relative.shadow-sm {
+    padding-bottom: 20px;
+}
+
+    a {
+        text-decoration: none;
+    }
+
+        a.text-black.pull-right {
+            font-weight: bold !important;
+        }
+    .shadow-sm {
+        box-shadow: 0 .400rem 1.95rem rgba(-9,0,0,.135) !important;
+    }
+    body {
+        margin-top: 20px;
+        background: #eee;
+    }
+
+    span {
+        padding-right: 30px !important;
+    }
+
+    li {
+        list-style: none;
+        float: right;
+    }
+
+    ul {
+        padding-left: 0;
+        padding-right: 0;
+        line-height: 1.7;
+    }
+    *{
+        font-family:Tahoma;
+    }
+
+    html{
+        margin-top: -20px !important;
+    }
+
+    .rounded {
+        border-radius: 1rem !important;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div dir="rtl" class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade  active show" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
+                   
+                        <div class="row">
+                            @foreach (var item in Model.CatalogItems)
+                            {
+                                <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-                  relative shadow-sm">
+                                        <div class="p-3 position-relative">
+                                            <div class="list-card-body">
+                                                <h6 class="mb-1">
+                                                    <a class="text-black pull-right" style="float:right">
+                                                        @item.ProductName
+                                                    </a>
+                                                </h6>
+                                                <br>
+                                                <br />
+                                                <ul>
+
+                                                    <li>
+                                                        <i class="zmdi zmdi-money"></i>
+                                                        قیمت :
+                                                        <span> @item.PriceProductR.ToString("#,#0") </span>
+                                                    </li>
+                                                  
+                                                    <br>
+                                                </ul>
+                                              
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] -کیت گروپ </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    
+    <link href="~/style.css" rel="stylesheet" />
+
+    <style>
+        .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl{
+            padding-left:0 !important;
+            padding-right:0 !important
+        }
+        *{
+            text-decoration:none;
+        }
+
+    </style>
+</head>
+<body>
+    
+    @RenderBody()
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    
+   
+</body>
+</html>
