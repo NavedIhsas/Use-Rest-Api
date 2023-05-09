@@ -41,10 +41,7 @@
         padding-right: 0;
         line-height: 1.7;
     }
-    *{
-        font-family:Tahoma;
-    }
-
+   
     html{
         margin-top: -20px !important;
     }
@@ -52,6 +49,18 @@
     .rounded {
         border-radius: 1rem !important;
     }
+
+
+    .osahan-account-page-right.shadow-sm.bg-white.p-4.h-100 {
+/*        background: linear-gradient(to right, #616161, #9bc5c3) !important; 
+*/    }
+
+
+    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+      
+        margin-bottom: -60px;
+    }
+
 </style>
 
 <div class="container">
@@ -60,40 +69,30 @@
             <div dir="rtl" class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade  active show" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
-                   
-                        <div class="row">
-                            @foreach (var item in Model.CatalogItems)
-                            {
-                                <div class="col-md-4 col-sm-6 mb-4 pb-2">
-                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-                  relative shadow-sm">
-                                        <div class="p-3 position-relative">
-                                            <div class="list-card-body">
-                                                <h6 class="mb-1">
-                                                    <a class="text-black pull-right" style="float:right">
-                                                        @item.ProductName
-                                                    </a>
-                                                </h6>
-                                                <br>
-                                                <br />
-                                                <ul>
+                        <center>
+                            <h3 class="text-success fw-bold">
+                                @Model.ItemRoot.Name
+                            </h3>
+                            <strong>@Model.ItemRoot.Desc</strong>
+                        </center>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">نام محصول </th>
+                                    <th scope="col">قیمت(ریال)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                                    @foreach(var item in Model.ItemRoot.CatalogPageItem)
+                                    { <tr>
+                                        <td>@item.ProductName</td>
+                                        <td>@item.PriceProductR.ToString("#,0#")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
 
-                                                    <li>
-                                                        <i class="zmdi zmdi-money"></i>
-                                                        قیمت :
-                                                        <span> @item.PriceProductR.ToString("#,#0") </span>
-                                                    </li>
-                                                  
-                                                    <br>
-                                                </ul>
-                                              
-                                            </div>
-                                          
-                                        </div>
-                                    </div>
-                                </div>
-
-                            }
-                        </div>
                     </div>
                 </div>
             </div>

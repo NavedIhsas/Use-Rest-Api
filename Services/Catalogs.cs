@@ -11,7 +11,7 @@ namespace Catologs.Services
     {
         List<CatalogMain> GetCatalogMain();
         List<CatalogPage> GetCatalogPage(string id);
-        List<CatalogPageItem> GetCatalogDetails(string id);
+        ItemRoot GetCatalogDetails(string id, string catalogId);
     }
     public class Catalog : ICatalogs
     {
@@ -46,7 +46,6 @@ namespace Catologs.Services
                 {
                     var image1 = Convert.FromBase64String(item.Image);
                     item.ImageByte = image1;
-
                     list.Add(item);
                 }
                 return list;
@@ -54,14 +53,22 @@ namespace Catologs.Services
             else throw new Exception(restult.ErrorMessage);
         } 
         
-        public List<CatalogPageItem> GetCatalogDetails(string id)
+        public ItemRoot GetCatalogDetails(string id,string catalogId)
         {
             var token = _configuraiton["BaseUrl:token"];
             var request = new RestRequest($"/crm/GetCatalogPageItem?catalogPageId={id}&token={token}", Method.Get);
+
+            var catalogPage = GetCatalogPage(catalogId).FirstOrDefault(x=>x.PageId.Equals(id));
+        
             var restult = _catalog.Execute(request);
             if (restult.StatusCode == System.Net.HttpStatusCode.OK)
-               return JsonConvert.DeserializeObject<ItemRoot>(restult.Content).CatalogPageItem;
-
+            {
+                var details= JsonConvert.DeserializeObject<ItemRoot>(restult.Content);
+                details.Order = catalogPage.Order;
+                details.Desc=catalogPage.Desc;
+                details.Name = catalogPage.Name;
+                return details;
+            }
             else throw new Exception(restult.ErrorMessage);
         }
     }

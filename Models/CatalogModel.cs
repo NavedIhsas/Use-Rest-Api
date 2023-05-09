@@ -54,5 +54,8 @@ public class CatalogPageItem
 
 public class ItemRoot
 {
+    public int Order { get; set; }
+    public string Desc { get; set; }
+    public string Name { get; set; }
     public List<CatalogPageItem> CatalogPageItem { get; set; }
 }

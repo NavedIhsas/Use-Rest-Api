@@ -13,10 +13,10 @@ namespace Catologs.Pages
             _catalog = catalogs;
         }
 
-        public List<CatalogPageItem> CatalogItems;
-        public void OnGet(string id)
+        public ItemRoot ItemRoot;
+        public void OnGet(string id,string catalogId)
         {
-           CatalogItems= _catalog.GetCatalogDetails(id);
+            ItemRoot = _catalog.GetCatalogDetails(id, catalogId);
         }
     }
 }

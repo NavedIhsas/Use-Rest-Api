@@ -1,20 +1,12 @@
 
+@import url("../fonts/vazir-font-face.css");
+
+@import url("../fonts/sahel-font-face.css");
+
 @font-face {
     font-family: Sahel;
     font-weight: normal;
     src: url("../fonts/Sahel.ttf");
-}
-
-@font-face {
-    font-family: IranSansBold;
-    font-weight: normal;
-    src: url("../fonts/IRANSans-Bold.ttf");
-}
-
-@font-face {
-    font-family: IranSans !important;
-    font-weight: normal;
-    src: url("../fonts/IRANSans.ttf");
 }
 
 
@@ -22,13 +14,13 @@ img {
     max-width: 100%;
 }
 * {
-    font-family: IranSans, tahoma;
+    font-family: Sahel, vazir;
 }
 
 body {
     margin-top: 20px;
     background-color: #f4f7f6;
-    font-family: IranSans !important;
+    font-family: Sahel !important;
 }
 
 .c_review {

@@ -172,42 +172,49 @@
     a.pro-title {
         font-weight: bold;
         color: royalblue;
-        text-decoration:none;
+        text-decoration: none;
     }
 
+    .panel{
+       padding-bottom:20px;
+    }
+
+    .card-img {
+        padding: 10px !important;
+        border-color: gainsboro !important;
+        border-width: 1px !important;
+        border-style: dotted;
+    }
 </style>
 
 <div class="container bootdey">
     <div class="card">
-       
         <div class="card-body">
             <div class="col-md-12">
                 <div class="row product-list">
                     @foreach (var r in Model.catalogPages)
                     {
                         <div class="col-md-4">
-                            <section class="panel">
-                                <div class="pro-img-box">
-                                    <a asp-page="/ProductDetails" asp-route-id="@r.PageId">
-                                        <img src="@String.Format("data:image/png;base64,{0}",
+                            <div class="card-img">
+                                <section class="panel">
+                                    <div class="panel-body text-center">
+                                        <h4>
+                                            <a asp-page="/ProductDetails" asp-route-id="@r.PageId" class="pro-title">
+                                                @r.Name
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div class="pro-img-box">
+                                        <a asp-page="/ProductDetails" asp-route-id="@r.PageId" asp-route-catalogId="@r.CatalogId">
+                                            <img src="@String.Format("data:image/png;base64,{0}",
                             Convert.ToBase64String(r.ImageByte))" />
 
-                                    </a>
-
-                                </div>
-
-                                <div class="panel-body text-center">
-                                    <h4>
-                                        <a asp-page="/ProductDetails" asp-route-id="@r.PageId" class="pro-title">
-                                            @r.Name
                                         </a>
-                                    </h4>
-
-                                </div>
-                            </section>
+                                    </div>
+                                </section>
+                              </div>
                         </div>
                     }
-
                 </div>
             </div>
         </div>
