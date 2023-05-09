@@ -182,8 +182,12 @@
     .card-img {
         padding: 10px !important;
         border-color: gainsboro !important;
-        border-width: 1px !important;
+        border-width: 0.3px !important;
         border-style: dotted;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .1rem .5rem rgba(4,3,3,.2075) !important
     }
 </style>
 
@@ -195,7 +199,7 @@
                     @foreach (var r in Model.catalogPages)
                     {
                         <div class="col-md-4">
-                            <div class="card-img">
+                            <div class="card-img shadow-sm">
                                 <section class="panel">
                                     <div class="panel-body text-center">
                                         <h4>
@@ -213,7 +217,10 @@
                                     </div>
                                 </section>
                               </div>
+                            <br />
+                            <br />
                         </div>
+                      
                     }
                 </div>
             </div>
