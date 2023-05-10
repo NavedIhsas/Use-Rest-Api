@@ -1,12 +1,10 @@
 ﻿using Catologs.Services;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace Catologs.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly ICatalogs _catalogs;

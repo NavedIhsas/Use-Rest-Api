@@ -1,5 +1,4 @@
-﻿// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-public class CatalogMain
+﻿public class CatalogMain
 {
     public string CatalogId { get; set; }
     public string Name { get; set; }
@@ -31,7 +30,6 @@ public class Application
 }
 
 
-// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 public class CatalogPageItem
 {
     public string DetailPriceListId { get; set; }

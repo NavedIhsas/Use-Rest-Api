@@ -1,0 +1,54 @@
+﻿.list-card.bg-white.h-100.rounded.overflow-hidden.position-.relative.shadow-sm {
+    padding-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+    a.text-black.pull-right {
+        font-weight: bold !important;
+    }
+
+.shadow-sm {
+    box-shadow: 0 .400rem 1.95rem rgba(-9,0,0,.135) !important;
+}
+
+body {
+    margin-top: 20px;
+    background: #eee;
+}
+
+span {
+    padding-right: 30px !important;
+}
+
+li {
+    list-style: none;
+    float: right;
+}
+
+ul {
+    padding-left: 0;
+    padding-right: 0;
+    line-height: 1.7;
+}
+
+html {
+    margin-top: -20px !important;
+}
+
+.rounded {
+    border-radius: 1rem !important;
+}
+
+
+.osahan-account-page-right.shadow-sm.bg-white.p-4.h-100 {
+    /*        background: linear-gradient(to right, #616161, #9bc5c3) !important; 
+*/
+}
+
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    margin-bottom: -60px;
+}
