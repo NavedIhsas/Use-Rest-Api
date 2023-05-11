@@ -10,7 +10,7 @@ namespace Catologs.Services
     public interface ICatalogs
     {
         List<CatalogMain> GetCatalogMain();
-        List<CatalogPage> GetCatalogPage(string id);
+        List<CatalogPage> GetCatalogPage(string id, string nId);
         ItemRoot GetCatalogDetails(string id, string catalogId);
     }
     public class Catalog : ICatalogs
@@ -33,16 +33,30 @@ namespace Catologs.Services
             else throw new Exception(restult.ErrorMessage);
         }
 
-        public List<CatalogPage> GetCatalogPage(string id)
+        public List<CatalogPage> GetCatalogPage(string id, string nId)
         {
+            if (string.IsNullOrEmpty(nId))
+                return null;
+
+            var gId = "{4C7FD04E-7716-44F5-BA98-0353A5D9DAFC}";
+
+            if (nId != gId)
+            {
+                var main = GetCatalogMain().Any(x => x.CatalogNoId == nId);
+                if (!main)
+                    return null;
+            }
+           
+
             var token = _configuraiton["BaseUrl:token"];
             var request = new RestRequest($"/crm/GetCatalogPage?catalogId={id}&token={token}", Method.Get);
             var restult = _catalog.Execute(request);
             if (restult.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                var catalog = JsonConvert.DeserializeObject<Application>(restult.Content).CatalogPage;
+                var application = JsonConvert.DeserializeObject<Application>(restult.Content).CatalogPage;
+                
                 var list = new List<CatalogPage>();
-                foreach (var item in catalog)
+                foreach (var item in application)
                 {
                     var image1 = Convert.FromBase64String(item.Image);
                     item.ImageByte = image1;
@@ -51,21 +65,22 @@ namespace Catologs.Services
                 return list;
             }
             else throw new Exception(restult.ErrorMessage);
-        } 
-        
-        public ItemRoot GetCatalogDetails(string id,string catalogId)
+        }
+
+        public ItemRoot GetCatalogDetails(string id, string catalogId)
         {
             var token = _configuraiton["BaseUrl:token"];
             var request = new RestRequest($"/crm/GetCatalogPageItem?catalogPageId={id}&token={token}", Method.Get);
 
-            var catalogPage = GetCatalogPage(catalogId).FirstOrDefault(x=>x.PageId.Equals(id));
-        
+            var gId = "{4C7FD04E-7716-44F5-BA98-0353A5D9DAFC}";
+            var catalogPage = GetCatalogPage(catalogId,gId).FirstOrDefault(x => x.PageId.Equals(id));
+
             var restult = _catalog.Execute(request);
             if (restult.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                var details= JsonConvert.DeserializeObject<ItemRoot>(restult.Content);
+                var details = JsonConvert.DeserializeObject<ItemRoot>(restult.Content);
                 details.Order = catalogPage.Order;
-                details.Desc=catalogPage.Desc;
+                details.Desc = catalogPage.Desc;
                 details.Name = catalogPage.Name;
                 return details;
             }

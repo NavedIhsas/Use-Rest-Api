@@ -32,13 +32,11 @@ var baseUrl = configuration["BaseUrl:url"];
 builder.Services.AddScoped<ICatalogs>(p=>new Catalog(new RestClient(baseUrl),configuration));
 builder.Services.AddHttpClient();
 var app = builder.Build();
-app.UseDeveloperExceptionPage();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-
-   // app.UseExceptionHandler("/Error");
+    app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
@@ -47,7 +45,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseStatusCodePages();
 app.UseAuthorization();
 
 app.UseCookiePolicy();

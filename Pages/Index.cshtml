@@ -40,7 +40,7 @@
                             @foreach (var item in Model.catalogMains)
                             {
                                 <li class="list-group-item">
-                                    <a asp-page="/Catalogs" asp-route-id="@item.CatalogId" class="btn btn-primary btn-round btn-sm">@item.Name</a>
+                                    <a asp-page="/Catalogs" asp-route-id="@item.CatalogId" asp-route-nId="@item.CatalogNoId" class="btn btn-primary btn-round btn-sm">@item.Name</a>
                                 </li>
                             }
 

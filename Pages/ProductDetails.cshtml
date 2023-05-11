@@ -4,7 +4,6 @@
     ViewData["Title"] = "جزئیات محصول";
 }
 
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
 <link href="~/css/product-details.css" rel="stylesheet" />
 
@@ -21,42 +20,54 @@
                             <strong>@Model.ItemRoot.Desc</strong>
                         </center>
                         <div class="right">
-                            <p style="float:right;font-size:small" class="help-block fw-light text-right">
-                                <i class="fa fa-info-circle"></i>
-                                <span style="padding-right:0px !important;" ">محصولات که با علامت ضربدر مشخص شده موجودی ندارد</span>
-                            </p>
-                        </div>
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</td>
-                                    <th scope="col">نام محصول </th>
-                                    <th scope="col">قیمت(ریال)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @{
-                                    int rowNo = 0;
-                                }
-                                @foreach (var item in Model.ItemRoot.CatalogPageItem)
-                                {
-                                    <tr>
-                                        <td>
-                                            @(rowNo += 1)
-                                        </td>
-                                        <td>
-                                        @*    <i class="fa fa-remove text-danger"></i>*@
-                                            @item.ProductName
-                                        </td>
-                                        <td>@item.PriceProductR.ToString("#,0#")</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+                            
+                              
+                            @if (Model.ItemRoot.ShowRemainInvertory == "on")
+                            {
+                                <p style="float:right;font-size:small" class="help-block fw-light text-right">
+                                    <i class="fa fa-info-circle"></i>
+                                    <span style="padding-right:0px !important;">محصولات که با علامت ضربدر مشخص شده موجودی ندارد</span>
+                                </p>
+                            }
 
+                                </div>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</td>
+                                        <th scope="col">نام محصول </th>
+                                        <th scope="col">قیمت(ریال)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int rowNo = 0;
+                                    }
+                                    @foreach (var item in Model.ItemRoot.CatalogPageItem.OrderByDescending(x=>x.RemainInvertory))
+                                    {
+                                        <tr>
+                                            <td>
+                                                @(rowNo += 1)
+                                            </td>
+                                            <td>
+                                                @if (Model.ItemRoot.ShowRemainInvertory == "on")
+                                                {
+                                                    @if (item.RemainInvertory <= 0)
+                                                    {
+                                                        <i class="fa fa-remove text-danger"></i>
+                                                    }
+                                                }
+                                                @item.ProductName
+                                            </td>
+                                            <td>@item.PriceProductR.ToString("#,0#")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

@@ -2,6 +2,26 @@
 @model ErrorModel
 @{
     ViewData["Title"] = "Error";
+
 }
 
 
+<link href="~/css/servererror.css" rel="stylesheet" />
+
+<div class="page-404">
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <!--BEGIN CONTENT-->
+                <div class="inner-circle"><i class="fa fa-cogs"></i><span>404</span></div>
+                <span class="inner-status"> صفحه مورد نظر یافت نشد</span>
+                <span class="inner-detail">
+
+    متاسفانه صحفه که دنبالش هستید وجود ندارد یا آدرس آن تغییر کرده است .
+    اگر نیاز به راهنمایی بیشتر دارید لطفا با بخش پشتیبانی تماس بگیرید.
+                </span>
+                <!--END CONTENT-->
+            </div>
+        </div>
+    </div>
+</div>

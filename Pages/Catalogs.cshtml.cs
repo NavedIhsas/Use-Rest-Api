@@ -14,10 +14,13 @@ namespace Catologs.Pages
         }
 
         public List<CatalogPage> catalogPages;
-        public  void OnGet(string id)
+        public  IActionResult OnGet(string id,string nId)
         {
-           catalogPages= _cotalog.GetCatalogPage(id);
-        
+           catalogPages= _cotalog.GetCatalogPage(id,nId);
+            if (catalogPages == null)
+              return  RedirectToPage("/Error");
+
+            return Page();
         }
     }
 }

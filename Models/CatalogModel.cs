@@ -2,6 +2,7 @@
 {
     public string CatalogId { get; set; }
     public string Name { get; set; }
+    public string CatalogNoId { get; set; }
 }
 
 public class Root
@@ -25,10 +26,11 @@ public class CatalogPage
 }
 public class Application
 {
+    public string RemainInvertory { get; set; }
+    public string GiftAmount { get; set; }
     public List<CatalogPage> CatalogPage { get; set; }
 
 }
-
 
 public class CatalogPageItem
 {
@@ -44,16 +46,18 @@ public class CatalogPageItem
     public double MinAmount { get; set; }
     public double MaxAmount { get; set; }
     public double Amountforgift { get; set; }
+    public string GiftProduct { get; set; }
     public double GiftAmount { get; set; }
-    public double GiftProduct { get; set; }
     public double SaleCoefficient { get; set; }
     public bool Stop { get; set; }
+    public double RemainInvertory { get; set; }
 }
-
 public class ItemRoot
 {
     public int Order { get; set; }
     public string Desc { get; set; }
     public string Name { get; set; }
+    public string ShowRemainInvertory { get; set; }
+
     public List<CatalogPageItem> CatalogPageItem { get; set; }
 }
