@@ -16,8 +16,7 @@ namespace Catologs.Pages
         public ItemRoot ItemRoot;
         public void OnGet(string id,string cId,string rIn)
         {
-            
-                ItemRoot = _catalog.GetCatalogDetails(id, cId);
+            ItemRoot = _catalog.GetCatalogDetails(id, cId, rIn);
                 ItemRoot.ShowRemainInvertory = rIn;
         
         }

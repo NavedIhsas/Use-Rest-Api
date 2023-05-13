@@ -14,9 +14,9 @@ namespace Catologs.Pages
         }
 
         public List<CatalogPage> catalogPages;
-        public  IActionResult OnGet(string id,string nId)
+        public  IActionResult OnGet(string id,string nId,string rIn)
         {
-           catalogPages= _cotalog.GetCatalogPage(id,nId);
+           catalogPages= _cotalog.GetCatalogPage(id,nId,rIn);
             if (catalogPages == null)
               return  RedirectToPage("/Error");
 

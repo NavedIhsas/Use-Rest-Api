@@ -14,10 +14,11 @@ namespace Catologs.Pages
         }
 
 
-        public List<CatalogMain> catalogMains;
+        public Root catalogMain;
         public void OnGet()
         {
-            catalogMains = _catalogs.GetCatalogMain();
+            catalogMain = _catalogs.GetCatalogMain();
+           
         }
     }
 

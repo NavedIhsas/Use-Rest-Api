@@ -26,7 +26,7 @@
                                         </h4>
                                     </div>
                                     <div class="pro-img-box">
-                                        <a asp-page="/ProductDetails" asp-route-id="@r.PageId" asp-route-rIn="off" asp-route-cId="@r.CatalogId">
+                                        <a asp-page="/ProductDetails" asp-route-id="@r.PageId" asp-route-rIn="@r.RemainInvertory" asp-route-cId="@r.CatalogId">
                                             <img src="@String.Format("data:image/png;base64,{0}",
                             Convert.ToBase64String(r.ImageByte))" />
 

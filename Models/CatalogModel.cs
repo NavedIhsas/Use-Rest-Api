@@ -7,6 +7,7 @@
 
 public class Root
 {
+    public string ShowRemainInvertory { get; set; }
     public List<CatalogMain> CatalogMain { get; set; }
 }
 
@@ -19,6 +20,7 @@ public class CatalogPage
     public string Desc { get; set; }
     public string Image { get; set; }
     public byte[] ImageByte { get; set; }
+    public string RemainInvertory { get; set; }
     public string Name { get; set; }
     public string GrpId { get; set; }
     public string GrpName { get; set; }
@@ -51,13 +53,15 @@ public class CatalogPageItem
     public double SaleCoefficient { get; set; }
     public bool Stop { get; set; }
     public double RemainInvertory { get; set; }
+    public string ShowRemainInvertory { get; set; }
+
 }
 public class ItemRoot
 {
     public int Order { get; set; }
     public string Desc { get; set; }
     public string Name { get; set; }
-    public string ShowRemainInvertory { get; set; }
 
     public List<CatalogPageItem> CatalogPageItem { get; set; }
+    public string ShowRemainInvertory { get; internal set; }
 }

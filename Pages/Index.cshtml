@@ -37,10 +37,10 @@
                 <div class="row">
                     <div class="col col-md-6">
                         <ul class="list-group list-group-horizontal-md">
-                            @foreach (var item in Model.catalogMains)
+                            @foreach (var item in Model.catalogMain.CatalogMain)
                             {
                                 <li class="list-group-item">
-                                    <a asp-page="/Catalogs" asp-route-id="@item.CatalogId" asp-route-nId="@item.CatalogNoId" class="btn btn-primary btn-round btn-sm">@item.Name</a>
+                                    <a asp-page="/Catalogs" asp-route-id="@item.CatalogId" asp-route-nId="@item.CatalogNoId" asp-route-rIn="off" class="btn btn-primary btn-round btn-sm">@item.Name</a>
                                 </li>
                             }
 
