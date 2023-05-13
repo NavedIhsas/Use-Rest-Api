@@ -9,6 +9,7 @@ namespace Catologs.Services
 {
     public interface ICatalogs
     {
+
         Root GetCatalogMain();
         List<CatalogPage> GetCatalogPage(string id, string nId,string rIn);
         ItemRoot GetCatalogDetails(string id, string catalogId, string rIn);
