@@ -8,6 +8,7 @@
 public class Root
 {
     public string ShowRemainInvertory { get; set; }
+    public string Message { get; set; }
     public List<CatalogMain> CatalogMain { get; set; }
 }
 
